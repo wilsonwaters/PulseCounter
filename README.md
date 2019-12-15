@@ -4,11 +4,15 @@ Measure pulse based meters such as power and water flow meters on Raspberry Pi
 Can read pulses from power meters and save a value for instantanious consumption and accumulated kWh. Saves current values to a file for reading by other applications (I use Zabbix for monitoring). Also posts to a URL, which can be used by emoncms or PVOutput.
 
 # Usage
-- Requires python3, RPi.GPIO
-- copy pulseCounter.py to /usr/local/bin/pulseCounter.py
-- set permissions to alow execute
-- copy pulseCounter-init to /etc/init.d/
-- configure systemv to run pulseCounter on startup
+- sudo apt-get install python3 rpi.gpio
+- git clone https://github.com/wilsonwaters/PulseCounter.git
+- cd PulseCounter
+- sudo cp pulseCounter.py /usr/local/bin/pulseCounter.py
+- sudo chmod 755 /usr/local/bin/pulseCounter.py
+- cp pulseCounter-init /etc/init.d/pulseCounter
+- sudo chmod 755 /etc/init.d/pulseCounter
+- sudo update-rc.d pulseCounter defaults
+- sudo /etc/init.d/pulseCounter start
 
 # Settings
 Configuratble settings are editable in the script.
@@ -16,6 +20,9 @@ Configuratble settings are editable in the script.
 - pollingInterval: If using polling mode, set the inteval. This should be based off the minimum expected pulse time and halved 0.05 is a good value for 1 pulse per Wh i.e. 10 pulses per second = 36kWh. Double for Nyquist 20, interval = 0.05s
 - URLPoster:interval: seconds between pushed updates to a URL
 - PVOutputPoster:pvoutputAPIKey and pvoutputSystemId: Required for sending values to pvOutput 
+
+# Output
+By default the current count is saved to /tmp/pulseCounterCount. This value wrapps to zero at the end of every day. You can use zabbix or any other monitoring application to read this value. The last value saved on shutdown so you can continue the count where it left off.
 
 # Electronics
 You will need to get the pulses into your raspberry pi somehow! I made a simple transister switch circuit with an LDR "looking at" our power meter. The digital input is high when the LED is lit. It also has a potentiometer to adjust the sensitivity. There's plenty of example circuits on the 'net. If there's a demand I'll take some photos of my setup and the circuit diagram.
