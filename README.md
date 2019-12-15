@@ -1,7 +1,7 @@
 # PulseCounter
 Measure pulse based meters such as power and water flow meters on Raspberry Pi
 
-Can read pulses from power meters and save a value for instantanious consumption and accumulated kWh. Saves current values to a file for reading by other applications (I use Zabbix for monitoring). Also posts to a URL, which can be used by emoncms or PVOutput.
+Read pulses from power meters and saves accumulated value to a file for reading by other applications (I use Zabbix for monitoring). Also posts instantanious kW and accumulated kWh to a URL, which can be used by emoncms or PVOutput.
 
 # Usage
 - sudo apt-get install python3 rpi.gpio
