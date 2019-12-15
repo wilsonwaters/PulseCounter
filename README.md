@@ -18,7 +18,7 @@ Configuratble settings are editable in the script.
 - PVOutputPoster:pvoutputAPIKey and pvoutputSystemId: Required for sending values to pvOutput 
 
 # Electronics
-You will need to get the pulses into your raspberry pi somehow! I made a simple circuit with an LDR attached to our power meter LED connected to a transister which latches when the LED is on. It also has a potentiometer to adjust the sensitivity. There's plenty of example circuits on the 'net. If there's a demand I'll take some photos of my setup and the circuit diagram.
+You will need to get the pulses into your raspberry pi somehow! I made a simple transister switch circuit with an LDR "looking at" our power meter. The digital input is high when the LED is lit. It also has a potentiometer to adjust the sensitivity. There's plenty of example circuits on the 'net. If there's a demand I'll take some photos of my setup and the circuit diagram.
 
 # Warning
 Use at your own risk. "It works for me". This is very much an afternoon hackjob and is far from good code :) You will probaly need to get into some python code to make this work for you.
