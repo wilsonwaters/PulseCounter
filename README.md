@@ -14,3 +14,6 @@ Can read pulses from power meters and save a value for instantanious consumption
 Configuratble settings are editable in the script.
 - isGPIOInturruptMode: true = Use inturrupts to trigger. Othewise use polling (I have found inturrupt mode to be unreliable, probably due to signal noise)
 - pollingInterval: If using polling mode, set the inteval. This should be based off the minimum expected pulse time and halved 0.05 is a good value for 1 pulse per Wh i.e. 10 pulses per second = 36kWh. Double for Nyquist 20, interval = 0.05s
+- URLPoster:interval: seconds between pushed updates to a URL
+- PVOutputPoster:pvoutputAPIKey and pvoutputSystemId: Required for sending values to pvOutput 
+
